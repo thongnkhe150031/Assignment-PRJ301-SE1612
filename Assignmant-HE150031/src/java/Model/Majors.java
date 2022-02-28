@@ -11,12 +11,12 @@ package Model;
  */
 public class Majors {
     private int majorsID;
-    private int majorsName;
+    private String majorsName;
 
     public Majors() {
     }
 
-    public Majors(int majorsID, int majorsName) {
+    public Majors(int majorsID, String majorsName) {
         this.majorsID = majorsID;
         this.majorsName = majorsName;
     }
@@ -29,13 +29,12 @@ public class Majors {
         this.majorsID = majorsID;
     }
 
-    public int getMajorsName() {
-        return majorsName;
+    public String getMajorsName() {
+        return majorsName;  
     }
 
-    public void setMajorsName(int majorsName) {
+    public void setMajorsName(String majorsName) {
         this.majorsName = majorsName;
     }
-    
     
 }
