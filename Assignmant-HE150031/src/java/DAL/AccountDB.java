@@ -26,7 +26,7 @@ public class AccountDB extends DBContext {
                     + "  FROM [User] a\n"
                     + "  inner join Majors b on a.majorsID = b.MajorsID\n"
                     + "  inner join [Role] c on  a.roleID = c.roleID \n"
-                    + "  where email = ? and password = ?";
+                    + "  where [email] = ? and [password] = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, email);
             stm.setString(2, password);
