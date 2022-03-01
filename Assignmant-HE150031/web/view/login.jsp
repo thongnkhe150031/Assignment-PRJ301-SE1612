@@ -18,28 +18,23 @@
         <div class="image">
             <image src="../img/Logo_Đại_học_FPT.png" alt="logo-fpt" />
         </div>
-        <form action="" method="post">
+        <form action="../login" method="POST">
             <div class="main">
                 <table>
                     <tr>
                         <td> Username </td>
-                        <td><input type="text" name="username"> </td>
+                        <td><input type="text" name="email"> </td>
                     </tr>
                     <tr>
                         <td>Password </td>
-                        <td><input type="text" name="username"></td>
+                        <td><input type="password" name="password"></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td> <select name="condition">
-                                <option value="1">Student</option>
-                                <option value="2">Teacher</option>
-                                <option value="3">Parents</option>
-                            </select><br /></td>
+                        <td><input type="checkbox" name="remember" value="remember" /> Remember Me. </td>                       
                     </tr>
-                </table>
-                <input type="submit" value="Log In">
-                <input type="checkbox" name="remember" value="remember" /> Remember Me.
+                </table>             
+                <input type="submit" value="Log In">    
             </div>
         </form>
     </div>
