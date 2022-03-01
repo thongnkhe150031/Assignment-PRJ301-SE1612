@@ -6,9 +6,11 @@
 package Controller.Authentication;
 
 import DAL.AccountDB;
+import DAL.ClassDB;
 import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,10 +34,14 @@ public class InforPerson extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         AccountDB db = new AccountDB();
-        Account account = db.getAccount("thongnkhe150031@gmail.com", "123456");
+        Account account = db.getAccount("thongnkhe150031@fpt.edu.vn", "123456");
         if(account == null){
             response.getWriter().print("null");
+        }else{
+            response.getWriter().print(account.getEmail());
         }
+//        ClassDB classDB = new ClassDB();
+//        response.getWriter().print(classDB.getClss().size());
 
     }
 
