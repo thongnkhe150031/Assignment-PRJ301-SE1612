@@ -33,16 +33,18 @@ public class UserDetail extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccountDB db = new AccountDB();
-        Account account = db.getAccount("thongnkhe150031@fpt.edu.vn", "123456");
-        if(account == null){
-            response.getWriter().print("null");
-        }else{
-            response.getWriter().print(account.getEmail());
-        }
+//        AccountDB db = new AccountDB();
+//        Account account = db.getAccount("thongnkhe150031@fpt.edu.vn", "123456");
+//        if(account == null){
+//            response.getWriter().print("null");
+//        }else{
+//            response.getWriter().print(account.getEmail());
+//        }
 //        ClassDB classDB = new ClassDB();
 //        response.getWriter().print(classDB.getClss().size());
-
+        ClassDB db = new ClassDB();
+        ArrayList<Account> userInClass = db.getUserInClass(1);
+        response.getWriter().print(userInClass.size());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
