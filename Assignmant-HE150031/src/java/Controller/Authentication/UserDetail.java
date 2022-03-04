@@ -7,7 +7,9 @@ package Controller.Authentication;
 
 import DAL.AccountDB;
 import DAL.ClassDB;
+import DAL.ScheduleDB;
 import Model.Account;
+import Model.Schedule;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -42,9 +44,13 @@ public class UserDetail extends HttpServlet {
 //        }
 //        ClassDB classDB = new ClassDB();
 //        response.getWriter().print(classDB.getClss().size());
-        ClassDB db = new ClassDB();
-        ArrayList<Account> userInClass = db.getUserInClass(1);
-        response.getWriter().print(userInClass.size());
+//        ClassDB db = new ClassDB();
+//        ArrayList<Account> userInClass = db.getUserInClass(1);
+//        response.getWriter().print(userInClass.size());      
+
+        ScheduleDB schDB = new ScheduleDB();  
+        ArrayList<Schedule> sche = schDB.getScheduleByTeacher(10);
+        response.getWriter().print(sche.get(0).getClss().getClassName());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
