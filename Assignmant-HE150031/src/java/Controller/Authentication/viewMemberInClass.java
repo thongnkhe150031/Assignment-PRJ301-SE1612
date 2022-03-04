@@ -5,8 +5,11 @@
  */
 package Controller.Authentication;
 
+import DAL.ScheduleDB;
+import Model.Schedule;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,19 +32,22 @@ public class viewMemberInClass extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet viewMemberInClass</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet viewMemberInClass at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+//        AccountDB db = new AccountDB();
+//        Account account = db.getAccount("thongnkhe150031@fpt.edu.vn", "123456");
+//        if(account == null){
+//            response.getWriter().print("null");
+//        }else{
+//            response.getWriter().print(account.getEmail());
+//        }
+//        ClassDB classDB = new ClassDB();
+//        response.getWriter().print(classDB.getClss().size());
+//        ClassDB db = new ClassDB();
+//        ArrayList<Account> userInClass = db.getUserInClass(1);
+//        response.getWriter().print(userInClass.size());      
+
+        ScheduleDB schDB = new ScheduleDB();  
+        ArrayList<Schedule> sche = schDB.getScheduleByTeacher(10);
+        response.getWriter().print(sche.get(0).getClss().getClassName());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
