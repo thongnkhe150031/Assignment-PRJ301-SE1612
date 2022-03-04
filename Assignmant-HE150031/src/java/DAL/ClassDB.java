@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Model.Class;
+import Model.Classs;
 import Model.Majors;
 import Model.Role;
 
@@ -22,14 +22,14 @@ import Model.Role;
  */
 public class ClassDB extends DBContext {
 
-    public ArrayList<Class> getClss() {
-        ArrayList<Class> cls = new ArrayList<>();
+    public ArrayList<Classs> getClss() {
+        ArrayList<Classs> cls = new ArrayList<>();
         try {
             String sql = "SELECT ClassID, ClassName FROM Class";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                Class c = new Class();
+                Classs c = new Classs();
                 c.setClassID(rs.getInt("ClassID"));
                 c.setClassName(rs.getString("ClassName"));
                 cls.add(c);
