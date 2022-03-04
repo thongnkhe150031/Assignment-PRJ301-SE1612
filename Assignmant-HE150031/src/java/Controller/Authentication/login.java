@@ -31,12 +31,6 @@ public class login extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -49,7 +43,7 @@ public class login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("view/login.jsp");
+        request.getRequestDispatcher("view/auth/login.jsp").forward(request, response);
     }
 
     /**
@@ -63,18 +57,15 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String username = request.getParameter("email");
+        String username = request.getParameter("email");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
-        
         AccountDB db = new AccountDB();
         Account account = db.getAccount(username, password);
-        if(account!=null)
-        {
+        if (account != null) {
             HttpSession session = request.getSession();
             session.setAttribute("account", account);
-            if(remember!=null)
-            {
+            if (remember != null) {
                 Cookie cuser = new Cookie("username", username);
                 Cookie cpass = new Cookie("password", password);
                 cuser.setMaxAge(3600);
@@ -83,13 +74,10 @@ public class login extends HttpServlet {
                 response.addCookie(cpass);
             }
             response.getWriter().println("login successful!");
-        }
-        else
-        {
+        } else {
             response.getWriter().println("login failed!");
         }
-        
-        
+
     }
 
     /**
