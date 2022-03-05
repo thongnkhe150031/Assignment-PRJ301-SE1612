@@ -12,6 +12,10 @@
         <servlet-name>viewMemberInClass</servlet-name>
         <servlet-class>Controller.Authentication.viewMemberInClass</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewSchedule</servlet-name>
+        <servlet-class>Controller.Teacher.ViewSchedule</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserDetail</servlet-name>
         <url-pattern>/UserDetail</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>viewMemberInClass</servlet-name>
         <url-pattern>/viewMemberInClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewSchedule</servlet-name>
+        <url-pattern>/ViewSchedule</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
