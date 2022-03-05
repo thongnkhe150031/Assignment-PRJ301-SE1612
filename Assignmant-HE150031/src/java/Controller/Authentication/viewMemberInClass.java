@@ -5,7 +5,9 @@
  */
 package Controller.Authentication;
 
+import DAL.AccountDB;
 import DAL.ScheduleDB;
+import Model.Account;
 import Model.Schedule;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,22 +34,24 @@ public class viewMemberInClass extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        AccountDB db = new AccountDB();
-//        Account account = db.getAccount("thongnkhe150031@fpt.edu.vn", "123456");
-//        if(account == null){
-//            response.getWriter().print("null");
-//        }else{
-//            response.getWriter().print(account.getEmail());
-//        }
+        AccountDB db = new AccountDB();
+        Account account = db.getAccount("thongnkhe150031@fpt.edu.vn", "123456");
+        if(account == null){
+            response.getWriter().print("null");
+        }else{
+            response.getWriter().print(account.getEmail());
+        }
+        Account account1 = (Account) request.getSession().getAttribute("account");
+        response.getWriter().print(account1.getEmail());
 //        ClassDB classDB = new ClassDB();
 //        response.getWriter().print(classDB.getClss().size());
 //        ClassDB db = new ClassDB();
 //        ArrayList<Account> userInClass = db.getUserInClass(1);
 //        response.getWriter().print(userInClass.size());      
-
-        ScheduleDB schDB = new ScheduleDB();  
-        ArrayList<Schedule> sche = schDB.getScheduleByTeacher(10);
-        response.getWriter().print(sche.get(0).getClss().getClassName());
+//
+//        ScheduleDB schDB = new ScheduleDB();  
+//        ArrayList<Schedule> sche = schDB.getScheduleByTeacher(10);
+//        response.getWriter().print(sche.get(0).getClss().getClassName());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
