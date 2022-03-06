@@ -6,6 +6,7 @@
 package Controller.Authentication;
 
 import DAL.AccountDB;
+import DAL.ClassDB;
 import DAL.ScheduleDB;
 import Model.Account;
 import Model.Schedule;
@@ -34,39 +35,18 @@ public class viewMemberInClass extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccountDB db = new AccountDB();
-        Account account = db.getAccount("thongnkhe150031@fpt.edu.vn", "123456");
-        if(account == null){
-            response.getWriter().print("null");
-        }else{
-            response.getWriter().print(account.getEmail());
-        }
-        Account account1 = (Account) request.getSession().getAttribute("account");
-        response.getWriter().print(account1.getEmail());
-//        ClassDB classDB = new ClassDB();
-//        response.getWriter().print(classDB.getClss().size());
-//        ClassDB db = new ClassDB();
-//        ArrayList<Account> userInClass = db.getUserInClass(1);
-//        response.getWriter().print(userInClass.size());      
-//
-//        ScheduleDB schDB = new ScheduleDB();  
-//        ArrayList<Schedule> sche = schDB.getScheduleByTeacher(10);
-//        response.getWriter().print(sche.get(0).getClss().getClassName());
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int id = Integer.parseInt(request.getParameter("ClassID"));
+        ClassDB clDB = new ClassDB();
+        ArrayList<Account> userInClass = clDB.getUserInClass(id);
+        request.setAttribute("userInClass", userInClass);
+        request.getRequestDispatcher("view/auth/memInClass.jsp").forward(request, response);
     }
 
     /**
@@ -80,7 +60,7 @@ public class viewMemberInClass extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**
