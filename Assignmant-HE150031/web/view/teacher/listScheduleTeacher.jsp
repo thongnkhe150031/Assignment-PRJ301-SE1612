@@ -17,7 +17,7 @@
     <body>
         
         <c:forEach items="${requestScope.listScheByTeacher}" var = "c">
-            ${c.getClss().getClassName()} <br/>
+            <a href="viewMemberInClass?ClassID=${c.getClss().getClassID()}">${c.getClss().getClassName()}</a><br/>        
         </c:forEach>
             
     </body>
