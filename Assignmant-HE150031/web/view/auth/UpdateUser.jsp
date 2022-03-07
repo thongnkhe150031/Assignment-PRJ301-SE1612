@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="UpdateUser" method="get">
+        <form action="../../UpdateUser" method="get">
             <table>
                 <tr>
                     <td>UserID: </td>
@@ -36,13 +36,12 @@
                 </tr>
                  <tr>
                     <td>Address: </td>
-                    <td><input type="text" value="${sessionScope.account.getDob()}"  name="address"></td>
+                    <td><input type="text" value="${sessionScope.account.getAddress()}"  name="address"></td>
                 </tr>
                  <tr>
                     <td></td>
                     <td><input type = "submit" value ="Update" ></td>
-                </tr>
-                
+                </tr>                
             </table>
                 
         </form>
