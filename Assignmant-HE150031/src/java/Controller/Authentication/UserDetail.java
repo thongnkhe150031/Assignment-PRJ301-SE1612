@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,22 +34,24 @@ public class UserDetail extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Account account = (Account) request.getSession().getAttribute("account");        
+        Account account = (Account) request.getSession().getAttribute("account");
+        AccountDB acDB = new AccountDB();
+        Account newAc = acDB.getUserbyID(account.getUserID());
+        HttpSession session = request.getSession();
+        session.setAttribute("account", newAc);
+        request.getRequestDispatcher("view/auth/UserDetail.jsp").forward(request, response);
+
     }
 
-  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";
