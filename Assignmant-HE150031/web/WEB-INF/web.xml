@@ -16,6 +16,18 @@
         <servlet-name>ViewSchedule</servlet-name>
         <servlet-class>Controller.Teacher.ViewSchedule</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateUserDetail</servlet-name>
+        <servlet-class>Controller.Authentication.UpdateUserDetail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrganizeYourTimetable</servlet-name>
+        <servlet-class>Controller.Teacher.OrganizeYourTimetable</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>viewTimetable</servlet-name>
+        <servlet-class>Controller.Teacher.viewTimetable</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserDetail</servlet-name>
         <url-pattern>/UserDetail</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>ViewSchedule</servlet-name>
         <url-pattern>/ViewSchedule</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserDetail</servlet-name>
+        <url-pattern>/UpdateUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrganizeYourTimetable</servlet-name>
+        <url-pattern>/OrganizeYourTimetable</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>viewTimetable</servlet-name>
+        <url-pattern>/viewTimetable</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

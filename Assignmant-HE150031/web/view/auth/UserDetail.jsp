@@ -51,8 +51,11 @@
                 <tr>
                     <td>Role: </td>
                     <td>${sessionScope.account.getRole().getRoleName()}</td>
-                </tr>           
+                </tr> 
+                
+                
         </table>
+                <a href="view/auth/UpdateUser.jsp"><button>Update</button></a>
 
         
     </body>

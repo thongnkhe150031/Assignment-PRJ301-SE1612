@@ -40,8 +40,7 @@ public class UserDetail extends HttpServlet {
         Account account = (Account) request.getSession().getAttribute("account");
         AccountDB acDB = new AccountDB();
         Account newAc = acDB.getUserbyID(account.getUserID());
-        HttpSession session = request.getSession();
-        session.setAttribute("account", newAc);
+        request.getSession().setAttribute("account", newAc);
         request.getRequestDispatcher("view/auth/UserDetail.jsp").forward(request, response);
 
     }
