@@ -10,15 +10,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="../../css/login.css" type="text/css">
+        <link rel="stylesheet" href="css/login.css" type="text/css">
     </head>
     <body>
    <h1>FPT University Academic Portal</h1>
     <div class="full_body">
         <div class="image">
-            <image src="../../img/Logo_Đại_học_FPT.png" alt="logo-fpt" />
+            <image src="img/Logo_Đại_học_FPT.png" alt="logo-fpt" />
         </div>
-        <form action="../../login" method="POST">
+        <form action="login" method="POST">
             <div class="main">
                 <table>
                     <tr>

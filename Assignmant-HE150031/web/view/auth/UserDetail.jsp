@@ -55,7 +55,7 @@
                 
                 
         </table>
-                <a href="view/auth/UpdateUser.jsp"><button>Update</button></a>
+                <a href="UpdateUser"><button>Update</button></a>
 
         
     </body>

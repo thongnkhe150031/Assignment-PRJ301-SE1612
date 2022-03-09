@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="../../UpdateUser" method="get">
+        <form action="UpdateUser" method="post">
             <table>
                 <tr>
                     <td>UserID: </td>
