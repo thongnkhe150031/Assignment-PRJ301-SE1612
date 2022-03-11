@@ -3,10 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.Teacher;
+package Controller.Student;
 
+import DAL.AttendanceDB;
+import Model.Account;
+import Model.Attendance;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,19 +20,28 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class OrganizeYourTimetable extends HttpServlet {
-
-
+public class ViewScheduleStudent extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/teacher/InsertTimetable.jsp").forward(request, response);
-        
+        Account account = (Account) request.getSession().getAttribute("account");
+        ArrayList<Attendance> atten = new ArrayList<Attendance>();
+        AttendanceDB attenDB = new AttendanceDB();
+        atten = attenDB.getScheduleByStudent(account.getUserID());
+        request.setAttribute("atten", atten);
+        request.getRequestDispatcher("view/student/listTimetableStudent.jsp").forward(request, response);
     }
 
- 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

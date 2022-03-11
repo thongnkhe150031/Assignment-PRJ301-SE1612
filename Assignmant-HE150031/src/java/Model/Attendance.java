@@ -14,7 +14,7 @@ import java.sql.Date;
 public class Attendance {
     private int attenID;
     private Schedule Sche;
-    private Account User;
+    private int UserID;
     private Date date;
     private Slot slot;
     private boolean atten;
@@ -23,10 +23,10 @@ public class Attendance {
     public Attendance() {
     }
 
-    public Attendance(int attenID, Schedule Sche, Account User, Date date, Slot slot, boolean atten, String note) {
+    public Attendance(int attenID, Schedule Sche, int UserID, Date date, Slot slot, boolean atten, String note) {
         this.attenID = attenID;
         this.Sche = Sche;
-        this.User = User;
+        this.UserID = UserID;
         this.date = date;
         this.slot = slot;
         this.atten = atten;
@@ -49,12 +49,12 @@ public class Attendance {
         this.Sche = Sche;
     }
 
-    public Account getUser() {
-        return User;
+    public int getUserID() {
+        return UserID;
     }
 
-    public void setUser(Account User) {
-        this.User = User;
+    public void setUserID(int UserID) {
+        this.UserID = UserID;
     }
 
     public Date getDate() {
@@ -88,6 +88,6 @@ public class Attendance {
     public void setNote(String note) {
         this.note = note;
     }
-    
+
     
 }

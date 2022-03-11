@@ -49,6 +49,22 @@ Select AttenID, Attendance.ScheID, Attendance.UserID, [Date], SlotID, Attendance
 from Attendance left join Schedule 
 on Attendance.ScheID = Schedule.ScheID
 where Schedule.UserID = 4 and Schedule.ClassID = 1
+select * from [user]
+select * from Schedule
+select * from Attendance
+--view attend by Student
+Select AttenID, Attendance.UserID as studentID ,Attendance.ScheID, Schedule.UserID, [User].email, [User].[password], [User].[name], [User].dob,
+[User].gender, [User].[address], [User].phone, [User].majorsID, Majors.MajorsName, [User].roleID,
+[Role].roleName, Schedule.ClassID, Class.ClassName, [Subject].SubID, [Subject].SubCode,[Subject].Subname, 
+[Subject].numberSlot, Schedule.StartDate, Schedule.EndDate,[Date], Attendance.SlotID, Slot.[Time],Attendance, note from Attendance
+left join Schedule on Attendance.ScheID = Schedule.ScheID
+left join [User] on Schedule.UserID = [User].UserID 
+left join [Majors] on [User].majorsID = [Majors].MajorsID
+left join [Role] on  [User].roleID = [Role].roleID
+left join [Subject] on [Schedule].SubID = [Subject].SubID
+left join [Class] on [Schedule].ClassID = [Class].ClassID
+left join [Slot] on [Attendance].SlotID = Slot.SlotID
+where Attendance.UserID =1
 
 
 
