@@ -6,7 +6,9 @@
 package Controller.Teacher;
 
 import DAL.AttendanceDB;
+import DAL.ClassDB;
 import Model.Account;
+import Model.Classs;
 import Model.Timetable;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,11 +37,14 @@ public class viewTimetable extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int classid = Integer.parseInt(request.getParameter("ClassID"));
+        ClassDB clDB = new ClassDB();
+        Classs classs = clDB.getClassbyClassID(Integer.parseInt(request.getParameter("ClassID")));
         Account account = (Account) request.getSession().getAttribute("account");
         int userID = account.getUserID();
         AttendanceDB attenDB = new AttendanceDB();
         ArrayList<Timetable> timetable = attenDB.getTimeTablebyClass(userID, classid);
         request.setAttribute("timetableByTeacher", timetable);
+        request.setAttribute("class", classs);
         request.getRequestDispatcher("view/teacher/TimetableClass.jsp").forward(request, response);
     }
 

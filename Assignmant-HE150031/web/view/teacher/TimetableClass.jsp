@@ -35,6 +35,6 @@
                 </c:forEach>
             </tbody>
         </table>
-        <a href="view/teacher/OrganizeYourTimetable.jsp">Insert</a>
+        <a href="InsertTimetable">Insert</a>
     </body>
 </html>

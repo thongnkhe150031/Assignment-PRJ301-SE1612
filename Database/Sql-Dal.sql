@@ -66,6 +66,8 @@ left join [Class] on [Schedule].ClassID = [Class].ClassID
 left join [Slot] on [Attendance].SlotID = Slot.SlotID
 where Attendance.UserID =1
 
+Select MajorsID, MajorsName from Majors
+
 
 
 

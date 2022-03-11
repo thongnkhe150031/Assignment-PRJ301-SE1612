@@ -7,8 +7,10 @@ package Controller.Authentication;
 
 import DAL.AccountDB;
 import DAL.ClassDB;
+import DAL.MajorsDB;
 import DAL.ScheduleDB;
 import Model.Account;
+import Model.Majors;
 import Model.Schedule;
 import java.io.IOException;
 import java.io.PrintWriter;

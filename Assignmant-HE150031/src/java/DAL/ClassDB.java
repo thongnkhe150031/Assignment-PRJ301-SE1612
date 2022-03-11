@@ -79,4 +79,31 @@ public class ClassDB extends DBContext {
 
         return member;
     }
+
+    public Classs getClassbyClassID(int classid) {
+        try {
+            String sql = "select * from Class where ClassID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, classid);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                Classs cl = new Classs();
+                cl.setClassID(rs.getInt("ClassID"));
+                cl.setClassName(rs.getString("ClassName"));
+                return cl;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClassDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+    
+    
+    public static void main(String[] args) {
+       ClassDB clDB = new ClassDB();
+       Classs cls = clDB.getClassbyClassID(2);
+        System.out.println(cls.getClassName());
+    }
 }

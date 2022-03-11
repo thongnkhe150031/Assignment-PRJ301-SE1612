@@ -21,8 +21,8 @@
         <servlet-class>Controller.Authentication.UpdateUserDetail</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>OrganizeYourTimetable</servlet-name>
-        <servlet-class>Controller.Teacher.OrganizeYourTimetable</servlet-class>
+        <servlet-name>InsertTimetable</servlet-name>
+        <servlet-class>Controller.Teacher.InsertTimetable</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>viewTimetable</servlet-name>
@@ -65,8 +65,8 @@
         <url-pattern>/UpdateUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>OrganizeYourTimetable</servlet-name>
-        <url-pattern>/OrganizeYourTimetable</url-pattern>
+        <servlet-name>InsertTimetable</servlet-name>
+        <url-pattern>/InsertTimetable</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>viewTimetable</servlet-name>

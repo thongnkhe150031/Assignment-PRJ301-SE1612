@@ -21,7 +21,11 @@
                 </tr>
                 <tr>
                     <th>Subject: </th>
-                    <th><input type="text" readonly></th>
+                    <th><select name="subject">
+                            <c:forEach items="${requestScope.scheduleUC}" var = "c">
+                                <option value="${c.getScheID()}">${c.getSub().getSubCode()} </option>
+                            </c:forEach>
+                        </select></th>
                 </tr>
                 <tr>
                     <th>Date: </th>

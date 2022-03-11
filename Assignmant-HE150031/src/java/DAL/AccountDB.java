@@ -58,27 +58,29 @@ public class AccountDB extends DBContext {
         return null;
     }
 
-    public void updateUser(String name, String phone, Date dob, String address, int UserID) {
+    public void updateUser(String name, String phone, Date dob, String address, int UserID, int major) {
         try {
-            String sql = "Update [User] \n"
-                    + "set [name] = ?,\n"
-                    + "   dob = ?,\n"
-                    + "   phone = ?,\n"
-                    + "   [address] = ?\n"
-                    + "where UserID = ?";
+            String sql = "UPDATE [dbo].[User]\n"
+                    + "   SET [name] = ?\n"
+                    + "      ,[dob] = ?\n"
+                    + "      ,[phone] = ? \n"
+                    + "      ,[address] =? \n"
+                    + "      ,[majorsID] = ?\n"
+                    + " WHERE [UserID] = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
-            statement.setDate(2,dob );
+            statement.setDate(2, dob);
             statement.setString(3, phone);
             statement.setString(4, address);
-            statement.setInt(5, UserID);
+            statement.setInt(5, major);
+            statement.setInt(6, UserID);
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(AccountDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-       public Account getUserbyID(int id) {
+
+    public Account getUserbyID(int id) {
         try {
             String sql = "SELECT [UserID],[email],[password],[name],[dob],[gender],[phone],[address], b.[majorsID],b.MajorsName ,c.[roleID], c.roleName\n"
                     + "  FROM [User] a\n"
@@ -112,5 +114,10 @@ public class AccountDB extends DBContext {
             Logger.getLogger(AccountDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        AccountDB ac = new AccountDB();
+        ac.updateUser("Nguyen Kiem Thong", "0886969888", Date.valueOf("2001-08-08"), "Hung Yen", 1, 1);
     }
 }

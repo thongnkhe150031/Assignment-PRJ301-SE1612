@@ -6,10 +6,13 @@
 package Controller.Authentication;
 
 import DAL.AccountDB;
+import DAL.MajorsDB;
 import Model.Account;
+import Model.Majors;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +28,9 @@ public class UpdateUserDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        MajorsDB ma = new MajorsDB();
+        ArrayList<Majors> listMajors = ma.getMajors();
+        request.setAttribute("listMajors", listMajors);
         request.getRequestDispatcher("view/auth/UpdateUser.jsp").forward(request, response);
     }
 
@@ -45,18 +51,17 @@ public class UpdateUserDetail extends HttpServlet {
             String phoneNumber = request.getParameter("phone");
             Date dob = Date.valueOf(request.getParameter("dob"));
             String address = request.getParameter("address");
+            int major = Integer.parseInt(request.getParameter("major"));
             String patter = "[0-9]+";
             if (!phoneNumber.matches(patter)) {
-                response.sendRedirect("view/auth/UpdateUser.jsp");
+                response.sendRedirect("UpdateUser");
             } else {
                 AccountDB acDB = new AccountDB();
-                acDB.updateUser(fname, phoneNumber, dob, address, account.getUserID());
-                HttpSession session = request.getSession();
-                session.setAttribute("account", account);
+                acDB.updateUser(fname, phoneNumber, dob, address, account.getUserID(), major);
                 response.sendRedirect("UserDetail");
             }
         } catch (Exception e) {
-            response.sendRedirect("view/auth/UpdateUser.jsp");
+            response.sendRedirect("UpdateUser");
         }
     }
 

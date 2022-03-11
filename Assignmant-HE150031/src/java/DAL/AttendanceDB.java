@@ -14,6 +14,7 @@ import Model.Schedule;
 import Model.Slot;
 import Model.Subject;
 import Model.Timetable;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -55,10 +56,6 @@ public class AttendanceDB extends DBContext {
             Logger.getLogger(AttendanceDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return timetable;
-    }
-
-    public void InsertTimeTablebyClass() {
-
     }
 
     public ArrayList<Attendance> getScheduleByStudent(int userID) {
@@ -141,11 +138,48 @@ public class AttendanceDB extends DBContext {
         return atten;
     }
 
+    public void insertSchedule(int classID, int scheID, Date date, int slot) {
+        try {
+            connection.setAutoCommit(false);
+            ClassDB clDB = new ClassDB();
+            ArrayList<Account> accounts = clDB.getUserInClass(classID);
+            for (Account account : accounts) {
+                String sql = "INSERT INTO [dbo].[Attendance]\n"
+                        + "           ([UserID]\n"
+                        + "           ,[ScheID]\n"
+                        + "           ,[Date]\n"
+                        + "           ,[SlotID]\n"
+                        + "           ,[Attendance]\n"
+                        + "           ,[note])\n"
+                        + "     VALUES(?, ?, ?, ?, ?, ?)";
+                PreparedStatement stm = connection.prepareStatement(sql);
+                stm.setInt(1, account.getUserID());
+                stm.setInt(2, scheID);
+                stm.setDate(3, date);
+                stm.setInt(4, slot);
+                stm.setBoolean(5, false);
+                stm.setString(6, null);
+                stm.executeUpdate();
+            }
+            connection.commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(AttendanceDB.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                connection.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(AttendanceDB.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } finally {
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(AttendanceDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        ArrayList<Attendance> atten = new ArrayList<>() ;
-        AttendanceDB atDB = new AttendanceDB();
-        atten = atDB.getScheduleByStudent(1) ;
-        System.out.println(atten.size());       
-        
+        AttendanceDB atenDB = new AttendanceDB();
+        atenDB.insertSchedule(1, 1, Date.valueOf("2022-01-10"), 1);
     }
 }
