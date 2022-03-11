@@ -13,6 +13,10 @@ body {
     line-height: 1.42857143;
     color: #333;
     background-color: #fff;
-    display: center;
-    margin-left: 1000px;
+    display: flex;
+    justify-content: center;
+}
+.full_body{
+    width: 70%
+    
 }
