@@ -9,6 +9,7 @@ import DAL.AccountDB;
 import DAL.ClassDB;
 import DAL.ScheduleDB;
 import Model.Account;
+import Model.Classs;
 import Model.Schedule;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,13 +39,15 @@ public class viewMemberInClass extends HttpServlet {
 
     }
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("ClassID"));
         ClassDB clDB = new ClassDB();
         ArrayList<Account> userInClass = clDB.getUserInClass(id);
+        ArrayList<Classs> getClass = clDB.getClss();
+        request.setAttribute("getClass", getClass);
+        request.setAttribute("classID", id);
         request.setAttribute("userInClass", userInClass);
         request.getRequestDispatcher("view/auth/memInClass.jsp").forward(request, response);
     }
@@ -60,7 +63,14 @@ public class viewMemberInClass extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        int id = Integer.parseInt(request.getParameter("classid"));
+        ClassDB clDB = new ClassDB();
+        ArrayList<Account> userInClass = clDB.getUserInClass(id);
+        ArrayList<Classs> getClass = clDB.getClss();
+        request.setAttribute("getClass", getClass);
+        request.setAttribute("classID", id);
+        request.setAttribute("userInClass", userInClass);
+        request.getRequestDispatcher("view/auth/memInClass.jsp").forward(request, response);
     }
 
     /**

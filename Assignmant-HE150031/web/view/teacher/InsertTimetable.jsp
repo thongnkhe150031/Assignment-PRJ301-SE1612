@@ -17,7 +17,7 @@
             <table border="1">
                 <tr>
                     <th>Class: </th>
-                    <th><input type="text" readonly></th>
+                    <th><input type="text" value="${requestScope.scheduleUC.get(0).getClss().getClassName()}" readonly></th>
                 </tr>
                 <tr>
                     <th>Subject: </th>

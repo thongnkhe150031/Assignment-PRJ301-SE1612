@@ -5,9 +5,13 @@
  */
 package Controller.Teacher;
 
+import DAL.AttendanceDB;
+import DAL.ClassDB;
 import DAL.ScheduleDB;
 import Model.Account;
+import Model.Classs;
 import Model.Schedule;
+import Model.Timetable;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -29,15 +33,33 @@ public class ViewSchedule extends HttpServlet {
         ScheduleDB scheDB = new ScheduleDB();
         Account account = (Account) request.getSession().getAttribute("account");
         ArrayList<Schedule> listScheByTeacher = scheDB.getScheduleByTeacher(account.getUserID());
+        AttendanceDB attenDB = new AttendanceDB();
+        ArrayList<Timetable> timetable = attenDB.getTimeTablebyClass(account.getUserID(), listScheByTeacher.get(0).getClss().getClassID());
+        ClassDB clDB = new ClassDB();
+        Classs clss = clDB.getClassbyClassID(listScheByTeacher.get(0).getClss().getClassID());
+        request.setAttribute("classsID", clss);
         request.setAttribute("listScheByTeacher", listScheByTeacher);
+        request.setAttribute("timetableByTeacher", timetable);
         request.getRequestDispatcher("view/teacher/listScheduleTeacher.jsp").forward(request, response);
+        
     }
 
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        ScheduleDB scheDB = new ScheduleDB();
+        Account account = (Account) request.getSession().getAttribute("account");
+        ArrayList<Schedule> listScheByTeacher = scheDB.getScheduleByTeacher(account.getUserID());
+        int classID = Integer.parseInt(request.getParameter("ClassID"));
+        AttendanceDB attenDB = new AttendanceDB();
+        ArrayList<Timetable> timetable = attenDB.getTimeTablebyClass(account.getUserID(), classID);
+        ClassDB clDB = new ClassDB();
+        Classs clss = clDB.getClassbyClassID(classID);
+        request.setAttribute("classsID", clss);
+        request.setAttribute("listScheByTeacher", listScheByTeacher);
+        request.setAttribute("timetableByTeacher", timetable);
+        request.getRequestDispatcher("view/teacher/listScheduleTeacher.jsp").forward(request, response);
     }
 
     /**

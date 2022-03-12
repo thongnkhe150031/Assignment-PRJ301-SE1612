@@ -68,6 +68,9 @@ where Attendance.UserID =1
 
 Select MajorsID, MajorsName from Majors
 
+select * from Schedule where UserID = 4 and ClassID = 1
+select * from Class where ClassID = 1
+
 
 
 

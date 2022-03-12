@@ -40,11 +40,11 @@ public class viewTimetable extends HttpServlet {
         ClassDB clDB = new ClassDB();
         Classs classs = clDB.getClassbyClassID(Integer.parseInt(request.getParameter("ClassID")));
         Account account = (Account) request.getSession().getAttribute("account");
-        int userID = account.getUserID();
         AttendanceDB attenDB = new AttendanceDB();
-        ArrayList<Timetable> timetable = attenDB.getTimeTablebyClass(userID, classid);
+        ArrayList<Timetable> timetable = attenDB.getTimeTablebyClass(account.getUserID(), classid);
         request.setAttribute("timetableByTeacher", timetable);
-        request.setAttribute("class", classs);
+        request.setAttribute("classs", classs);
+//        response.getWriter().print(classs.getClassName());
         request.getRequestDispatcher("view/teacher/TimetableClass.jsp").forward(request, response);
     }
 
@@ -60,11 +60,14 @@ public class viewTimetable extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int classid = Integer.parseInt(request.getParameter("ClassID"));
+        ClassDB clDB = new ClassDB();
+        Classs classs = clDB.getClassbyClassID(Integer.parseInt(request.getParameter("ClassID")));
         Account account = (Account) request.getSession().getAttribute("account");
         int userID = account.getUserID();
         AttendanceDB attenDB = new AttendanceDB();
         ArrayList<Timetable> timetable = attenDB.getTimeTablebyClass(userID, classid);
         request.setAttribute("timetableByTeacher", timetable);
+        request.setAttribute("classs", classs);
         request.getRequestDispatcher("view/teacher/TimetableClass.jsp").forward(request, response);
     }
 

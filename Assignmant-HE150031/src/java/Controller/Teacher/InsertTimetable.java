@@ -5,6 +5,7 @@
  */
 package Controller.Teacher;
 
+import DAL.ClassDB;
 import DAL.ScheduleDB;
 import Model.Account;
 import Model.Classs;
@@ -26,13 +27,13 @@ public class InsertTimetable extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Classs cls = (Classs) request.getAttribute("class");
+        ClassDB clDB = new ClassDB();
+        int clssID = Integer.parseInt(request.getParameter("clssID"));
         Account account = (Account) request.getSession().getAttribute("account");
         ScheduleDB scheDB = new ScheduleDB();
-//        ArrayList<Schedule> scheduleUC = scheDB.getScheduleByTeacherandClass(account.getUserID(), cls.getClassID());
-//        request.setAttribute("scheduleUC", scheduleUC);
-        response.getWriter().print(cls.getClassID());
-//        request.getRequestDispatcher("view/teacher/InsertTimetable.jsp").forward(request, response);
+        ArrayList<Schedule> scheduleUC = scheDB.getScheduleByTeacherandClass(account.getUserID(), clssID);
+        request.setAttribute("scheduleUC", scheduleUC);
+        request.getRequestDispatcher("view/teacher/InsertTimetable.jsp").forward(request, response);
 
     }
 
