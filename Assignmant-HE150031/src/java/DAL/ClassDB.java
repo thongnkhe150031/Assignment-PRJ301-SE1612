@@ -100,10 +100,30 @@ public class ClassDB extends DBContext {
         return null;
     }
     
+        public Classs getClassbyName(String name) {
+        try {
+            String sql = "select * from Class where ClassName = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, name);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                Classs cl = new Classs();
+                cl.setClassID(rs.getInt("ClassID"));
+                cl.setClassName(rs.getString("ClassName"));
+                return cl;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClassDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+    
     
     public static void main(String[] args) {
        ClassDB clDB = new ClassDB();
-       Classs cls = clDB.getClassbyClassID(2);
-        System.out.println(cls.getClassName());
+       Classs cls = clDB.getClassbyName("SE1601");
+        System.out.println(cls.getClassID());
     }
 }

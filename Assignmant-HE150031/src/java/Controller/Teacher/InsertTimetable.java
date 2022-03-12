@@ -5,13 +5,16 @@
  */
 package Controller.Teacher;
 
+import DAL.AttendanceDB;
 import DAL.ClassDB;
 import DAL.ScheduleDB;
 import Model.Account;
+import Model.Attendance;
 import Model.Classs;
 import Model.Schedule;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,6 +43,17 @@ public class InsertTimetable extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String classname = request.getParameter("classInsert");
+        ClassDB clDB = new ClassDB();
+        Classs cls = clDB.getClassbyName(classname);
+        int subject = Integer.parseInt(request.getParameter("subject"));
+        Date date = Date.valueOf(request.getParameter("ordate"));
+        int slot = Integer.parseInt(request.getParameter("orslot"));
+//       response.getWriter().print(cls.getClassID());
+        AttendanceDB attenDB = new AttendanceDB();
+        attenDB.insertSchedule(cls.getClassID(), subject, date, slot);
+        response.sendRedirect("ViewSchedule");
+        
 
     }
 
