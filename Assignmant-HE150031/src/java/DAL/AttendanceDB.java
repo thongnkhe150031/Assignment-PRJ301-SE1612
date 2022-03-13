@@ -178,8 +178,41 @@ public class AttendanceDB extends DBContext {
         }
     }
 
+    public void deleteSchedule(int classID, int scheID, Date date, int slot) {
+        try {
+            connection.setAutoCommit(false);
+            ClassDB clDB = new ClassDB();
+            ArrayList<Account> accounts = clDB.getUserInClass(classID);
+            for (Account account : accounts) {
+            String sql = "DELETE FROM [dbo].[Attendance]\n"
+                    + "      WHERE UserID = ? and ScheID = ? and [Date] = ? and SlotID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, account.getUserID());
+            stm.setInt(2, scheID);
+            stm.setDate(3, date);
+            stm.setInt(4, slot);
+            stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AttendanceDB.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                connection.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(AttendanceDB.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+        finally{
+            try {
+                connection.setAutoCommit(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(AttendanceDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
     public static void main(String[] args) {
         AttendanceDB atenDB = new AttendanceDB();
-        atenDB.insertSchedule(1, 1, Date.valueOf("2022-01-10"), 1);
+        atenDB.deleteSchedule(1, 1, Date.valueOf("2022-01-12"), 1);
     }
 }

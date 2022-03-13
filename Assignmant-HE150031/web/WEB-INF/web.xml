@@ -44,6 +44,10 @@
         <servlet-name>logout</servlet-name>
         <servlet-class>Controller.Authentication.logout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteSchedule</servlet-name>
+        <servlet-class>Controller.Teacher.DeleteSchedule</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserDetail</servlet-name>
         <url-pattern>/UserDetail</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteSchedule</servlet-name>
+        <url-pattern>/DeleteSchedule</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
