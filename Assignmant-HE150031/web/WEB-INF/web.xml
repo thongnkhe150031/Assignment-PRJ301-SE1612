@@ -48,6 +48,18 @@
         <servlet-name>DeleteSchedule</servlet-name>
         <servlet-class>Controller.Teacher.DeleteSchedule</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckAttendance</servlet-name>
+        <servlet-class>Controller.Teacher.CheckAttendance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewScheduleForAtten</servlet-name>
+        <servlet-class>Controller.Teacher.ViewScheduleForAtten</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAttendance</servlet-name>
+        <servlet-class>Controller.Teacher.ViewAttendance</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserDetail</servlet-name>
         <url-pattern>/UserDetail</url-pattern>
@@ -95,6 +107,18 @@
     <servlet-mapping>
         <servlet-name>DeleteSchedule</servlet-name>
         <url-pattern>/DeleteSchedule</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckAttendance</servlet-name>
+        <url-pattern>/CheckAttendance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewScheduleForAtten</servlet-name>
+        <url-pattern>/ViewScheduleForAtten</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAttendance</servlet-name>
+        <url-pattern>/ViewAttendance</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

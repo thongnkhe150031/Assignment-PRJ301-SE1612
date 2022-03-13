@@ -282,7 +282,7 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody
+                        <tbody>
                             <c:set var="i" value="0"></c:set>
                             <c:forEach items="${requestScope.timetableByTeacher}" var = "c">
                                 <tr>

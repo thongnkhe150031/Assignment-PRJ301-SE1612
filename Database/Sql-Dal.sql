@@ -71,7 +71,7 @@ Select MajorsID, MajorsName from Majors
 select * from Schedule where UserID = 4 and ClassID = 1
 select * from Class where ClassID = 1
 
-
+select * from Attendance where ScheID = 6  and [Date] = "2022-01-03" and SlotID = 2
 
 
                     

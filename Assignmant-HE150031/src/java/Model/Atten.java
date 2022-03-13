@@ -11,37 +11,26 @@ import java.sql.Date;
  *
  * @author Admin
  */
-public class Attendance {
-
+public class Atten {
     private int attenID;
     private Schedule Sche;
-    private int UserID;
-    private String studenName;
+    private Account UserID;
     private Date date;
     private Slot slot;
     private boolean atten;
     private String note;
 
-    public Attendance() {
+    public Atten() {
     }
 
-    public Attendance(int attenID, Schedule Sche, int UserID, String studenName, Date date, Slot slot, boolean atten, String note) {
+    public Atten(int attenID, Schedule Sche, Account UserID, Date date, Slot slot, boolean atten, String note) {
         this.attenID = attenID;
         this.Sche = Sche;
         this.UserID = UserID;
-        this.studenName = studenName;
         this.date = date;
         this.slot = slot;
         this.atten = atten;
         this.note = note;
-    }
-
-    public String getStudenName() {
-        return studenName;
-    }
-
-    public void setStudenName(String studenName) {
-        this.studenName = studenName;
     }
 
     public int getAttenID() {
@@ -52,10 +41,6 @@ public class Attendance {
         this.attenID = attenID;
     }
 
-    public Schedule getClss() {
-        return Sche;
-    }
-
     public Schedule getSche() {
         return Sche;
     }
@@ -64,11 +49,11 @@ public class Attendance {
         this.Sche = Sche;
     }
 
-    public int getUserID() {
+    public Account getUserID() {
         return UserID;
     }
 
-    public void setUserID(int UserID) {
+    public void setUserID(Account UserID) {
         this.UserID = UserID;
     }
 
@@ -104,4 +89,5 @@ public class Attendance {
         this.note = note;
     }
 
+ 
 }
