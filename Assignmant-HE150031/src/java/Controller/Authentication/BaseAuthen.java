@@ -73,7 +73,7 @@ public abstract class BaseAuthen extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (isAuthenticated(request)) {
-            processGet(request, response);
+            processPost(request, response);
         } else {
             response.sendRedirect("login");
         }

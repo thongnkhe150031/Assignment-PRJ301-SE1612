@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class viewMemberInClass extends HttpServlet{
+public class viewMemberInClass extends BaseAuthen{
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,7 +37,7 @@ public class viewMemberInClass extends HttpServlet{
 
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("ClassID"));
         ClassDB clDB = new ClassDB();
@@ -58,7 +58,7 @@ public class viewMemberInClass extends HttpServlet{
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("classid"));
         ClassDB clDB = new ClassDB();

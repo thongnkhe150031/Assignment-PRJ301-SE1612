@@ -146,6 +146,7 @@
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
+                                <a href="HomepageTeacher">Home</a>
                                 <h2>View <b>Attendace</b></h2>
                             </div>
                         </div>

@@ -23,10 +23,10 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
-public class UpdateUserDetail extends HttpServlet {
+public class UpdateUserDetail extends BaseAuthen {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         MajorsDB ma = new MajorsDB();
         ArrayList<Majors> listMajors = ma.getMajors();
@@ -43,7 +43,7 @@ public class UpdateUserDetail extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             Account account = (Account) request.getSession().getAttribute("account");
