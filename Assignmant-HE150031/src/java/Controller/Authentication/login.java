@@ -56,9 +56,13 @@ public class login extends HttpServlet {
                 response.addCookie(cuser);
                 response.addCookie(cpass);
             }
-            response.getWriter().println("login successful!");
+            if(account.getRole().getRoleID() == 2){
+            response.sendRedirect("HomepageTeacher");
+            }else{
+            response.sendRedirect("HomepageStudent");
+            }
         } else {
-            response.getWriter().println("login failed!");
+            response.sendRedirect("login");
         }
 
     }

@@ -21,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class CheckAttendance extends BaseAuthen {
+public class CheckAttendance extends HttpServlet {
 
     @Override
-    protected void processGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int scheID = Integer.parseInt(request.getParameter("scheID"));
         Date date = Date.valueOf(request.getParameter("day"));
@@ -44,7 +44,7 @@ public class CheckAttendance extends BaseAuthen {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void processPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int scheID = Integer.parseInt(request.getParameter("scheID"));
         Date date = Date.valueOf(request.getParameter("day"));

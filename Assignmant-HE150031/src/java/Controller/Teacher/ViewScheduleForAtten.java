@@ -25,10 +25,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ViewScheduleForAtten extends BaseAuthen {
+public class ViewScheduleForAtten extends HttpServlet {
 
     @Override
-    protected void processGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ScheduleDB scheDB = new ScheduleDB();
         Account account = (Account) request.getSession().getAttribute("account");
@@ -53,7 +53,7 @@ public class ViewScheduleForAtten extends BaseAuthen {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void processPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ScheduleDB scheDB = new ScheduleDB();
         Account account = (Account) request.getSession().getAttribute("account");

@@ -26,10 +26,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class InsertTimetable extends BaseAuthen {
+public class InsertTimetable extends HttpServlet {
 
     @Override
-    protected void processGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ClassDB clDB = new ClassDB();
         int clssID = Integer.parseInt(request.getParameter("clssID"));
@@ -42,7 +42,7 @@ public class InsertTimetable extends BaseAuthen {
     }
 
     @Override
-    protected void processPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String classname = request.getParameter("classInsert");
         ClassDB clDB = new ClassDB();

@@ -5,6 +5,8 @@
  */
 package HomePage;
 
+import Controller.Authentication.BaseAuthen;
+import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,27 +18,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class HomepageTeacher extends HttpServlet {
+public class HomepageTeacher extends BaseAuthen {
 
-  
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+         Account account = (Account) request.getSession().getAttribute("account");
+        request.getRequestDispatcher("view/teacher/homepageTeacher.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
     }
 
     /**
