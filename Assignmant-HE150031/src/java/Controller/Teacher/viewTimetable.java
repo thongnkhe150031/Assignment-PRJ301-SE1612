@@ -5,6 +5,7 @@
  */
 package Controller.Teacher;
 
+import Controller.Authentication.BaseAuthen;
 import DAL.AttendanceDB;
 import DAL.ClassDB;
 import Model.Account;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class viewTimetable extends HttpServlet {
+public class viewTimetable extends BaseAuthen {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -34,7 +35,7 @@ public class viewTimetable extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int classid = Integer.parseInt(request.getParameter("ClassID"));
         ClassDB clDB = new ClassDB();
@@ -57,7 +58,7 @@ public class viewTimetable extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int classid = Integer.parseInt(request.getParameter("ClassID"));
         ClassDB clDB = new ClassDB();

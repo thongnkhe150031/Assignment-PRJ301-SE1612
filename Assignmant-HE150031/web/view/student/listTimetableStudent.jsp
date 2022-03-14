@@ -14,10 +14,13 @@
     </head>
     <body>
         <c:forEach items="${requestScope.atten}" var = "c">
+            ${c.getSche().getClss().getClassName()}
             ${c.getSche().getSub().getSubCode()}
             ${c.getDate()}
             ${c.getSlot().getSlotID()}
-            ${c.getSlot().getSlotTime()}<br/>
+            ${c.getSlot().getSlotTime()}
+            ${c.isAtten()}
+            <br/>
         </c:forEach>
     </body>
 </html>

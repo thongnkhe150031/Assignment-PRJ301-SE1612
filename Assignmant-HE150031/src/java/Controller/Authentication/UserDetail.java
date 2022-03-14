@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
-public class UserDetail extends HttpServlet {
+public class UserDetail extends BaseAuthen{
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,7 +37,7 @@ public class UserDetail extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Account account = (Account) request.getSession().getAttribute("account");
         AccountDB acDB = new AccountDB();
@@ -48,7 +48,7 @@ public class UserDetail extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
     }

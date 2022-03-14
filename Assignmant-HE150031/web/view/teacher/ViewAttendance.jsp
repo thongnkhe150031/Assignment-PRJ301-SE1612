@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+        <title>View Attendance</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -166,7 +166,7 @@
                                 <tr>
                                     <td>${i=i+1} </td>
                                     <td>${c.getSche().getClss().getClassName()} </td>
-                                    <td>${c.getStudenName()} <input type="hidden" value="${c.getDate()}" name="day"></td>
+                                    <td>${c.getStudenName()}</td>
                                     <td><input class="atten" ${c.isAtten() == true?"checked":""} type="radio" value="true" name="present${c.getUserID()}" readonly="">attended
                                         <input class ="absent" ${c.isAtten() == false?"checked":""}  type="radio" value="false" name="present${c.getUserID()}" readonly="">absent</td>
                                     <td><input class="note" type="text" value="${c.getNote()}" name="note${c.getUserID()}" readonly></td>

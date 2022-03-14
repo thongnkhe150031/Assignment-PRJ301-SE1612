@@ -5,6 +5,7 @@
  */
 package Controller.Teacher;
 
+import Controller.Authentication.BaseAuthen;
 import DAL.AttendanceDB;
 import DAL.ClassDB;
 import DAL.ScheduleDB;
@@ -24,11 +25,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ViewSchedule extends HttpServlet {
+public class ViewSchedule extends BaseAuthen {
 
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ScheduleDB scheDB = new ScheduleDB();
         Account account = (Account) request.getSession().getAttribute("account");
@@ -46,7 +47,7 @@ public class ViewSchedule extends HttpServlet {
 
     
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ScheduleDB scheDB = new ScheduleDB();
         Account account = (Account) request.getSession().getAttribute("account");

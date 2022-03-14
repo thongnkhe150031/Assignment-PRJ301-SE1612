@@ -5,6 +5,7 @@
  */
 package Controller.Student;
 
+import Controller.Authentication.BaseAuthen;
 import DAL.AttendanceDB;
 import Model.Account;
 import Model.Attendance;
@@ -20,11 +21,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ViewScheduleStudent extends HttpServlet {
+public class ViewScheduleStudent extends BaseAuthen {
 
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Account account = (Account) request.getSession().getAttribute("account");
         ArrayList<Attendance> atten = new ArrayList<Attendance>();
@@ -43,7 +44,7 @@ public class ViewScheduleStudent extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
     }

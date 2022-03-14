@@ -58,7 +58,7 @@ public abstract class BaseAuthen extends HttpServlet {
         if (isAuthenticated(request)) {
             processGet(request, response);
         } else {
-            response.getWriter().println("access denied!");
+            response.sendRedirect("login");
         }
 
     }
@@ -75,7 +75,7 @@ public abstract class BaseAuthen extends HttpServlet {
         if (isAuthenticated(request)) {
             processGet(request, response);
         } else {
-            response.getWriter().println("access denied!");
+            response.sendRedirect("login");
         }
 
     }
