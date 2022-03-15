@@ -1,13 +1,11 @@
 <%-- 
-    Document   : listScheduleTeacher
-    Created on : Mar 5, 2022, 10:20:07 PM
+    Document   : ViewClass
+    Created on : Mar 16, 2022, 2:49:43 AM
     Author     : Admin
 --%>
 
-<%@page import="java.util.ArrayList"%>
-<%@page import="Model.Schedule"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -251,7 +249,7 @@
                 <div class="table-wrapper">
                     <div class="table-title">
                         <div class="row">
-                            <div class="col-sm-8"><h2>View <b>Schedule</b></h2></div>
+                            <div class="col-sm-8"><h2>View <b>Class</b></h2></div>
                             <div class="col-sm-4">
                                 <!--                                <div class="search-box">
                                                                     <i class="material-icons">&#xE8B6;</i>
@@ -260,74 +258,35 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <form action="ViewSchedule" method="post">
-                            Choose: <select name="ClassID">
-                                <c:forEach items="${requestScope.listScheByTeacher}" var = "c">
-                                    <option <c:if test="${c.getClss().getClassID() == requestScope.classsID.getClassID()}">selected</c:if> value="${c.getClss().getClassID()}">${c.getClss().getClassName()}</option>
-                                </c:forEach>
-                            </select>
-                            <input class ="submit " type="submit" value="submit">
-                        </form>
-                        <br/>
-                    </div>
                     <table class="table table-striped table-hover table-bordered">
                         <thead>
-                            <tr>
+                            <tr>                                 
                                 <th>#</th>
-                                <th>Subject Code </th>
-                                <th>Date</th>
-                                <th>Slot </th>
-                                <th>Time</th>
+                                <th>ClassName</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:set var="i" value="0"></c:set>
-                            <c:forEach items="${requestScope.timetableByTeacher}" var = "c">
-                                <tr>
-                                    <td>${i=i+1}</td>
-                                    <td>${c.getSubCode()}</td>
-                                    <td>${c.getDate()}</td>
-                                    <td>${c.getSlot().getSlotID()}</td>
-                                    <td>${c.getSlot().getSlotTime()}</td>  
-                                    <td>
-                                        <a href="viewMemberInClass?ClassID=${requestScope.classsID.getClassID()}" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                                        <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                        <a href="#myModal" class="delete" title="Delete" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <!-- Modal HTML -->
-                            <div id="myModal" class="modal fade">
-                                <div class="modal-dialog modal-confirm">
-                                    <div class="modal-content">
-                                        <div class="modal-header flex-column">
-                                            <div class="icon-box">
-                                                <i class="material-icons">&#xE5CD;</i>
-                                            </div>
-                                            <h4 class="modal-title w-100">Are you sure?</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Do you really want to delete these records? This process cannot be undone.</p>
-                                        </div>
-                                        <div class="modal-footer justify-content-center">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            <a href="DeleteSchedule?ClassID=${requestScope.classsID.getClassID()}&ScheID=${c.getSche()}&day=${c.getDate()}&SlotID=${c.getSlot().getSlotID()}"><button  type="button" class="btn btn-danger">Delete</button></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <c:set var="i" value="0"></c:set>
+                        <c:forEach items="${listClass}" var = "c">
+                            <tr>
+                            <tr>
+                                <td>${i = i+1}</td>
+                                <td>${c.getClassName()}</td>
+                                <td>
+                                    <a href="viewMemberInClass?ClassID=${c.getClassID()}" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                                    <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                    <a href="deleteClass?ClassID=${c.getClassID()}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                </td>
+                            </tr>
                         </c:forEach>
                         </tbody>
                     </table>
-                    <a href="InsertTimetable?clssID=${requestScope.classsID.getClassID()}">Insert</a>
+                    <a href="#">Insert</a>
                 </div>
             </div>  
         </div>
-
-
     </body>
-
 </body>
 </html>
+

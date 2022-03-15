@@ -39,6 +39,20 @@ public class Account {
         this.role = role;
     }
 
+    public Account(String email, String password, String name, Date dob, boolean gender, String phone, String address, Majors major, Role role) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.dob = dob;
+        this.gender = gender;
+        this.phone = phone;
+        this.address = address;
+        this.major = major;
+        this.role = role;
+    }
+    
+    
+
     public int getUserID() {
         return userID;
     }

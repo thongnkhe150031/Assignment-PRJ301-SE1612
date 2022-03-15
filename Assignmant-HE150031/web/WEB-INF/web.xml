@@ -60,6 +60,26 @@
         <servlet-name>ViewAttendance</servlet-name>
         <servlet-class>Controller.Teacher.ViewAttendance</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewUser</servlet-name>
+        <servlet-class>Controller.Admin.ViewUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteUser</servlet-name>
+        <servlet-class>Controller.Admin.deleteUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InserUser</servlet-name>
+        <servlet-class>Controller.Admin.InserUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewClass</servlet-name>
+        <servlet-class>Controller.Admin.ViewClass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteClass</servlet-name>
+        <servlet-class>Controller.Admin.deleteClass</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserDetail</servlet-name>
         <url-pattern>/UserDetail</url-pattern>
@@ -119,6 +139,26 @@
     <servlet-mapping>
         <servlet-name>ViewAttendance</servlet-name>
         <url-pattern>/ViewAttendance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewUser</servlet-name>
+        <url-pattern>/ViewUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteUser</servlet-name>
+        <url-pattern>/deleteUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InserUser</servlet-name>
+        <url-pattern>/InserUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewClass</servlet-name>
+        <url-pattern>/ViewClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteClass</servlet-name>
+        <url-pattern>/deleteClass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -73,5 +73,18 @@ select * from Class where ClassID = 1
 
 select * from Attendance where ScheID = 6  and [Date] = "2022-01-03" and SlotID = 2
 
+--lay thong tin cua giao vien va hoc sinh
+SELECT [UserID],[email],[password],[name],[dob],[gender],[phone],[address], b.[majorsID],b.MajorsName ,c.[roleID], c.roleName
+FROM [User] a inner join Majors b on a.majorsID = b.MajorsID
+ inner join [Role] c on  a.roleID = c.roleID
+where a.roleID = 1
+
+--get roll
+Select * from [Role] where roleID != 3
+
+Select MajorsID, MajorsName from Majors where MajorsID !=0
+Select * from [User] where UserID = 0
+
+
 
                     

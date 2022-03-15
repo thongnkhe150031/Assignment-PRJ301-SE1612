@@ -99,8 +99,8 @@ public class ClassDB extends DBContext {
 
         return null;
     }
-    
-        public Classs getClassbyName(String name) {
+
+    public Classs getClassbyName(String name) {
         try {
             String sql = "select * from Class where ClassName = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
@@ -119,11 +119,23 @@ public class ClassDB extends DBContext {
 
         return null;
     }
-    
-    
+
+    public void deleteClass(int classID) {
+        try {
+            String sql = "DELETE FROM [dbo].[Class]\n"
+                    + "      WHERE ClassID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, classID);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClassDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     public static void main(String[] args) {
-       ClassDB clDB = new ClassDB();
-       Classs cls = clDB.getClassbyName("SE1601");
+        ClassDB clDB = new ClassDB();
+        Classs cls = clDB.getClassbyName("SE1601");
         System.out.println(cls.getClassID());
     }
 }

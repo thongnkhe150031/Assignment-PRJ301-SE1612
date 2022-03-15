@@ -22,12 +22,12 @@ public class MajorsDB extends DBContext {
     public ArrayList<Majors> getMajors() {
         ArrayList<Majors> listMajor = new ArrayList<>();
         try {
-            String sql = "Select MajorsID, MajorsName from Majors";
+            String sql = "Select MajorsID, MajorsName from Majors where MajorsID !=0";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 Majors ma = new Majors();
-                ma.setMajorsID(rs.getInt("majorsid"));
+                ma.setMajorsID(rs.getInt("MajorsID"));
                 ma.setMajorsName(rs.getString("MajorsName"));
                 listMajor.add(ma);
             }
@@ -36,10 +36,10 @@ public class MajorsDB extends DBContext {
         }
         return listMajor;
     }
-//
-//    public static void main(String[] args) {
-//        MajorsDB ma = new MajorsDB();
-//        ArrayList<Majors> listMajor = ma.getMajors();
-//        System.out.println(listMajor.size());
-//    }
+
+    public static void main(String[] args) {
+        MajorsDB ma = new MajorsDB();
+        ArrayList<Majors> listMajor = ma.getMajors();
+        System.out.println(listMajor.size());
+    }
 }
