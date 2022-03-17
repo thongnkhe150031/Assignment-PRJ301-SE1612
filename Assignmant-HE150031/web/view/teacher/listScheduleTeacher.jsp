@@ -242,10 +242,23 @@
                 display: inline-block;
                 margin: 100px auto;
             }
+            .home{
+                position: absolute ;
+                top: 15px;
+                right: 32px;
+                z-index: 999999;
+                background-color: #fff;
+            }  
+            .home button{
+                padding: 5px;
+                background-color: light;
+                border-radius: 5px;
+
+            }
+
         </style>
     </head>
     <body>
-
         <div class="container-xl">
             <div class="table-responsive">
                 <div class="table-wrapper">
@@ -253,6 +266,9 @@
                         <div class="row">
                             <div class="col-sm-8"><h2>View <b>Schedule</b></h2></div>
                             <div class="col-sm-4">
+                                <div class="home">
+                                    <a href="Homepage${sessionScope.account.getRole().getRoleName()}"><button>Home</button></a>
+                                </div>
                                 <!--                                <div class="search-box">
                                                                     <i class="material-icons">&#xE8B6;</i>
                                                                     <input type="text" class="form-control" placeholder="Search&hellip;">

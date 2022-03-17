@@ -133,9 +133,29 @@ public class ClassDB extends DBContext {
 
     }
 
+    public void InsertStudentInClass(int classID, int UserID) {
+        try {
+            String sql = "INSERT INTO [dbo].[ClassMember]\n"
+                    + "           ([UserID]\n"
+                    + "           ,[ClassID])\n"
+                    + "     VALUES\n"
+                    + "           (?, ?)";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, UserID);
+            stm.setInt(2, classID);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClassDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void InsertClass() {
+    }
+
     public static void main(String[] args) {
         ClassDB clDB = new ClassDB();
-        Classs cls = clDB.getClassbyName("SE1601");
-        System.out.println(cls.getClassID());
+//        Classs cls = clDB.getClassbyName("SE1601");
+//        System.out.println(cls.getClassID());
+        clDB.InsertStudentInClass(2, 222);
     }
 }

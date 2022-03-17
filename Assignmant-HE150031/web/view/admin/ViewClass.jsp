@@ -275,7 +275,7 @@
                                 <td>${c.getClassName()}</td>
                                 <td>
                                     <a href="viewMemberInClass?ClassID=${c.getClassID()}" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                                    <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                    <a href="InsertStudentInClass?ClassID=${c.getClassID()}&cname=${c.getClassName()}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                     <a href="deleteClass?ClassID=${c.getClassID()}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>

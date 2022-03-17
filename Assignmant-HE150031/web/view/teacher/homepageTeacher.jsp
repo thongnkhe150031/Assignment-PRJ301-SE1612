@@ -159,8 +159,8 @@
             <!-- Collection of nav links, forms, and other content for toggling -->
             <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
                 <div class="navbar-nav">
-                    <a href="ViewSchedule" class="nav-item nav-link active">View Schedule</a>
-                    <a href="ViewScheduleForAtten" class="nav-item nav-link">Check Attendance</a>
+                    <a href="ViewClass" class="nav-item nav-link active">View Class</a>
+                    <a href="ViewUser" class="nav-item nav-link">View User</a>
                 </div>
                 <div class="navbar-nav ml-auto">
                     <div class="nav-item dropdown">

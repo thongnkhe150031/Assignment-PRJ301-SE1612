@@ -80,6 +80,14 @@
         <servlet-name>deleteClass</servlet-name>
         <servlet-class>Controller.Admin.deleteClass</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertStudentInClass</servlet-name>
+        <servlet-class>Controller.Admin.InsertStudentInClass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomepageAdmin</servlet-name>
+        <servlet-class>HomePage.HomepageAdmin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserDetail</servlet-name>
         <url-pattern>/UserDetail</url-pattern>
@@ -159,6 +167,14 @@
     <servlet-mapping>
         <servlet-name>deleteClass</servlet-name>
         <url-pattern>/deleteClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertStudentInClass</servlet-name>
+        <url-pattern>/InsertStudentInClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomepageAdmin</servlet-name>
+        <url-pattern>/HomepageAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

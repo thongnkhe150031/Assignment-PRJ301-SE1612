@@ -58,8 +58,10 @@ public class login extends HttpServlet {
             }
             if(account.getRole().getRoleID() == 2){
             response.sendRedirect("HomepageTeacher");
-            }else{
+            }else if(account.getRole().getRoleID() == 1){
             response.sendRedirect("HomepageStudent");
+            }else{
+            response.sendRedirect("HomepageAdmin");
             }
         } else {
             response.sendRedirect("login");
