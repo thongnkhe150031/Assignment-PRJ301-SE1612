@@ -34,10 +34,10 @@ public class InsertStudentInClass extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int cID =  Integer.parseInt(request.getParameter("ClassID"));
-        String cname =request.getParameter("cname");
-        Classs clas = new Classs();
+        ClassDB clDB = new ClassDB();
+        Classs clas = clDB.getClassbyClassID(cID);
         request.setAttribute("lclass", clas);
-        request.getRequestDispatcher("view/admin/IsertStudentInClass.jsp").forward(request, response);
+        request.getRequestDispatcher("view/admin/InsertStudentInClass.jsp").forward(request, response);
     }
 
     /**
@@ -51,11 +51,12 @@ public class InsertStudentInClass extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int cID =  Integer.parseInt(request.getParameter("classID"));
+        String cID =  request.getParameter("className");
         int uID = Integer.parseInt(request.getParameter("userID"));
         ClassDB clDB = new ClassDB();
-        clDB.InsertStudentInClass(cID, uID);
-        response.sendRedirect("ViewClass");
+        Classs cl = clDB.getClassbyName(cID);
+        clDB.InsertStudentInClass(cl.getClassID(), uID);
+        response.sendRedirect("ViewClass");                                              
     }
 
     /**

@@ -77,7 +77,7 @@
                 <h2 class="text-center">Add students to class</h2>   
                 <div class="form-group">
                     <div class="input-group">                     
-                        <input type="text" class="form-control" name="classID" value="${lclass.getClassID}" readonly>				
+                        <input type="text" class="form-control" name="className" value="${lclass.getClassName()}" readonly>				
                     </div>
                 </div>
                 <div class="form-group">
