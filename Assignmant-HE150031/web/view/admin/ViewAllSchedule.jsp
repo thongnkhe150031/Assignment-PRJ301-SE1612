@@ -151,7 +151,7 @@
             function doConfirm(id) {
                 var c = confirm("Do you want to delete class ?");
                 if (c) {
-                    window.location.href = "deleteClass?ClassID=" + id;
+                    window.location.href = "DeleteScheduleAD?scheID=" + id;
                 }
             }
         </script>
@@ -163,7 +163,7 @@
                 <div class="table-wrapper">
                     <div class="table-title">
                         <div class="row">
-                            <div class="col-sm-8"><h2>View <b>Class</b></h2></div>
+                            <div class="col-sm-8"><h2>View <b>Schedule</b></h2></div>
                             <div class="col-sm-4">
                                 <div class="home">
                                     <a href="HomepageAdmin">Home</a>
@@ -179,27 +179,34 @@
                         <thead>
                             <tr>                                 
                                 <th>#</th>
-                                <th>ClassName</th>
-                                <th>Action</th>
+                                <th>Teacher</th>
+                                <th>Class</th>
+                                <th>Subject</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:set var="i" value="0"></c:set>
-                            <c:forEach items="${listClass}" var = "c">
+                            <c:forEach items="${listScheAd}" var = "c">
                                 <tr>
                                 <tr>
                                     <td>${i = i+1}</td>
-                                    <td>${c.getClassName()}</td>
+                                    <td>${c.getUser().getName()}</td>
+                                    <td>${c.getClss().getClassName()}</td>
+                                    <td>${c.getSub().getSubCode()}</td>
+                                    <td>${c.getSdate()}</td>
+                                    <td>${c.getEdate()}</td>
                                     <td>
-                                        <a href="viewMemberInClass?ClassID=${c.getClassID()}" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                                        <a href="InsertStudentInClass?ClassID=${c.getClassID()}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                        <a onclick="doConfirm('${c.getClassID()}');" href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                        <a href="ViewTimeTableAD?scheID=${c.getScheID()}" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                                        <a href="UpdateSchedule?scheID=${c.getScheID()}" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                        <a onclick="doConfirm('${c.getScheID()}');" href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                     </td>
                                 </tr>
                             </c:forEach>
                         </tbody>
                     </table>
-                    <a href="InsertClass">Insert</a>
+                    <a href="InsertSchedule">Insert</a>
                 </div>
             </div>  
         </div>

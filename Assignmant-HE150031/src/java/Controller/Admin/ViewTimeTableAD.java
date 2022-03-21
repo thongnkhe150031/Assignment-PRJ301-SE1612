@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package HomePage;
+package Controller.Admin;
 
-import Model.Account;
+import DAL.AttendanceDB;
+import DAL.ScheduleDB;
+import Model.Attendance;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +20,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class HomepageAdmin extends HttpServlet {
+public class ViewTimeTableAD extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Account account = (Account) request.getSession().getAttribute("account");
-        request.getRequestDispatcher("view/admin/homepageAdmin.jsp").forward(request, response);
+        int schID = Integer.parseInt(request.getParameter("scheID"));
+        AttendanceDB attenDB = new AttendanceDB();
+        ArrayList<Attendance> atten = attenDB.getScheduleByScheID(schID);
+        request.setAttribute("listAtten", atten);
+        request.getRequestDispatcher("view/admin/ViewAttenAD.jsp").forward(request, response);
     }
 
     /**
@@ -37,8 +44,7 @@ public class HomepageAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Account account = (Account) request.getSession().getAttribute("account");
-        request.getRequestDispatcher("view/admin/homepageAdmin.jsp").forward(request, response);
+       
     }
 
     /**

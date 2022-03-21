@@ -88,6 +88,34 @@
         <servlet-name>HomepageAdmin</servlet-name>
         <servlet-class>HomePage.HomepageAdmin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewAllSchedule</servlet-name>
+        <servlet-class>Controller.Admin.ViewAllSchedule</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubjectDetail</servlet-name>
+        <servlet-class>Controller.Authentication.SubjectDetail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertClass</servlet-name>
+        <servlet-class>Controller.Admin.InsertClass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertSchedule</servlet-name>
+        <servlet-class>Controller.Admin.InsertSchedule</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteScheduleAD</servlet-name>
+        <servlet-class>Controller.Admin.DeleteScheduleAD</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateSchedule</servlet-name>
+        <servlet-class>Controller.Admin.UpdateSchedule</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewTimeTableAD</servlet-name>
+        <servlet-class>Controller.Admin.ViewTimeTableAD</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserDetail</servlet-name>
         <url-pattern>/UserDetail</url-pattern>
@@ -175,6 +203,34 @@
     <servlet-mapping>
         <servlet-name>HomepageAdmin</servlet-name>
         <url-pattern>/HomepageAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllSchedule</servlet-name>
+        <url-pattern>/ViewAllSchedule</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubjectDetail</servlet-name>
+        <url-pattern>/SubjectDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertClass</servlet-name>
+        <url-pattern>/InsertClass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertSchedule</servlet-name>
+        <url-pattern>/InsertSchedule</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteScheduleAD</servlet-name>
+        <url-pattern>/DeleteScheduleAD</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSchedule</servlet-name>
+        <url-pattern>/UpdateSchedule</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewTimeTableAD</servlet-name>
+        <url-pattern>/ViewTimeTableAD</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

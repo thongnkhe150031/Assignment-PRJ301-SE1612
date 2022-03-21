@@ -267,7 +267,7 @@
                             <div class="col-sm-8"><h2>View <b>Schedule</b></h2></div>
                             <div class="col-sm-4">
                                 <div class="home">
-                                    <a href="Homepage${sessionScope.account.getRole().getRoleName()}"><button>Home</button></a>
+                                    <a href="ViewAllSchedule}"><button>Back</button></a>
                                 </div>
                                 <!--                                <div class="search-box">
                                                                     <i class="material-icons">&#xE8B6;</i>
@@ -275,17 +275,6 @@
                                                                 </div>-->
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <form action="ViewSchedule" method="post">
-                            Choose: <select name="ClassID">
-                                <c:forEach items="${requestScope.listScheByTeacher}" var = "c">
-                                    <option <c:if test="${c.getClss().getClassID() == requestScope.classsID.getClassID()}">selected</c:if> value="${c.getClss().getClassID()}">${c.getClss().getClassName()}</option>
-                                </c:forEach>
-                            </select>
-                            <input class ="submit " type="submit" value="submit">
-                        </form>
-                        <br/>
                     </div>
                     <table class="table table-striped table-hover table-bordered">
                         <thead>
@@ -300,10 +289,10 @@
                         </thead>
                         <tbody>
                             <c:set var="i" value="0"></c:set>
-                            <c:forEach items="${requestScope.timetableByTeacher}" var = "c">
+                            <c:forEach items="${requestScope.listAtten}" var = "c">
                                 <tr>
                                     <td>${i=i+1}</td>
-                                    <td>${c.getSche().getClss().getClassName()}</td>
+                                    <td>${c.getSubCode()}</td>
                                     <td>${c.getDate()}</td>
                                     <td>${c.getSlot().getSlotID()}</td>
                                     <td>${c.getSlot().getSlotTime()}</td>  
@@ -341,9 +330,6 @@
                 </div>
             </div>  
         </div>
-
-
     </body>
-
 </body>
 </html>

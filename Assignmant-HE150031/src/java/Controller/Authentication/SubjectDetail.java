@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package HomePage;
+package Controller.Authentication;
 
-import Model.Account;
+import DAL.SubjectDB;
+import Model.Subject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,13 +18,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class HomepageAdmin extends HttpServlet {
+public class SubjectDetail extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Account account = (Account) request.getSession().getAttribute("account");
-        request.getRequestDispatcher("view/admin/homepageAdmin.jsp").forward(request, response);
+        int subID = Integer.parseInt(request.getParameter("subID"));
+        SubjectDB subDB = new SubjectDB();
+        Subject sub = subDB.getSubjectbyID(subID);
+        request.setAttribute("sub", sub);
+        request.getRequestDispatcher("view/auth/SubjectDetail.jsp").forward(request, response);
     }
 
     /**
@@ -37,8 +41,7 @@ public class HomepageAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Account account = (Account) request.getSession().getAttribute("account");
-        request.getRequestDispatcher("view/admin/homepageAdmin.jsp").forward(request, response);
+
     }
 
     /**

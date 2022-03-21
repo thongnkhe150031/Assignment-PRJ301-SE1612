@@ -21,7 +21,7 @@ import Model.Role;
  * @author Admin
  */
 public class ClassDB extends DBContext {
-
+    
     public ArrayList<Classs> getClss() {
         ArrayList<Classs> cls = new ArrayList<>();
         try {
@@ -39,7 +39,7 @@ public class ClassDB extends DBContext {
         }
         return cls;
     }
-
+    
     public ArrayList<Account> getUserInClass(int ClassID) {
         ArrayList<Account> member = new ArrayList<>();
         try {
@@ -76,10 +76,10 @@ public class ClassDB extends DBContext {
         } catch (SQLException ex) {
             Logger.getLogger(ClassDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         return member;
     }
-
+    
     public Classs getClassbyClassID(int classid) {
         try {
             String sql = "select * from Class where ClassID = ?";
@@ -92,14 +92,14 @@ public class ClassDB extends DBContext {
                 cl.setClassName(rs.getString("ClassName"));
                 return cl;
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ClassDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         return null;
     }
-
+    
     public Classs getClassbyName(String name) {
         try {
             String sql = "select * from Class where ClassName = ?";
@@ -112,14 +112,14 @@ public class ClassDB extends DBContext {
                 cl.setClassName(rs.getString("ClassName"));
                 return cl;
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ClassDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         return null;
     }
-
+    
     public void deleteClass(int classID) {
         try {
             String sql = "DELETE FROM [dbo].[Class]\n"
@@ -130,9 +130,9 @@ public class ClassDB extends DBContext {
         } catch (SQLException ex) {
             Logger.getLogger(ClassDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
-
+    
     public void InsertStudentInClass(int classID, int UserID) {
         try {
             String sql = "INSERT INTO [dbo].[ClassMember]\n"
@@ -148,16 +148,27 @@ public class ClassDB extends DBContext {
             Logger.getLogger(ClassDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public void InsertClass() {
+    
+    public void InsertClass(String name) {
+        try {
+            String sql = "INSERT INTO [dbo].[Class]\n"
+                    + "           ([ClassName])\n"
+                    + "     VALUES\n"
+                    + "           (?)";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, name);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClassDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
+    
     public static void main(String[] args) {
         ClassDB clDB = new ClassDB();
 //        Classs cls = clDB.getClassbyName("SE1601");
 //        System.out.println(cls.getClassID());
-        clDB.InsertStudentInClass(2, 222);
+//        clDB.InsertStudentInClass(2, 222);
+//        clDB.InsertClass("IA1603");
     }
-
-
+    
 }

@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package HomePage;
+package Controller.Admin;
 
-import Model.Account;
+import DAL.ClassDB;
+import DAL.ScheduleDB;
+import Model.Classs;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +20,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class HomepageAdmin extends HttpServlet {
+public class InsertSchedule extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Account account = (Account) request.getSession().getAttribute("account");
-        request.getRequestDispatcher("view/admin/homepageAdmin.jsp").forward(request, response);
+        request.getRequestDispatcher("view/admin/insertScheduleAD.jsp").forward(request, response);
     }
 
     /**
@@ -37,8 +39,16 @@ public class HomepageAdmin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Account account = (Account) request.getSession().getAttribute("account");
-        request.getRequestDispatcher("view/admin/homepageAdmin.jsp").forward(request, response);
+        int tid = Integer.parseInt(request.getParameter("tid"));
+        int sid = Integer.parseInt(request.getParameter("sid"));
+        String cname = request.getParameter("cname");
+        Date sdate = Date.valueOf(request.getParameter("sdate"));
+        Date edate = Date.valueOf(request.getParameter("edate"));
+        ClassDB clDB = new ClassDB();
+        Classs clss = clDB.getClassbyName(cname);
+        ScheduleDB scheDB = new ScheduleDB();
+        scheDB.InsertScheduleAD(tid, sid, clss.getClassID(), sdate, edate);
+        response.sendRedirect("ViewAllSchedule");
     }
 
     /**

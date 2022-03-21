@@ -24,9 +24,9 @@ public class deleteUser extends HttpServlet {
             throws ServletException, IOException {
         int userID = Integer.parseInt(request.getParameter("userID"));
         AccountDB acDB = new AccountDB();
-        response.getWriter().print(userID);
-//       acDB.deleteUser(userID);
-//       response.sendRedirect("ViewUser");
+//        response.getWriter().print(userID);
+       acDB.deleteUser(userID);
+       response.sendRedirect("ViewUser");
     }
 
 
