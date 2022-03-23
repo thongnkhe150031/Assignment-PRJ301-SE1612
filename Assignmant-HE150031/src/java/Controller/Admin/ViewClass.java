@@ -5,6 +5,7 @@
  */
 package Controller.Admin;
 
+import Controller.Authentication.BaseAuthen;
 import DAL.ClassDB;
 import Model.Account;
 import Model.Classs;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ViewClass extends HttpServlet {
+public class ViewClass extends BaseAuthen {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -32,7 +33,7 @@ public class ViewClass extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ClassDB clDB = new ClassDB();
         ArrayList<Classs> listClass = clDB.getClss();
@@ -51,7 +52,7 @@ public class ViewClass extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
     }

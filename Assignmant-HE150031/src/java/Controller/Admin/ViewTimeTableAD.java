@@ -5,6 +5,7 @@
  */
 package Controller.Admin;
 
+import Controller.Authentication.BaseAuthen;
 import DAL.AttendanceDB;
 import DAL.ScheduleDB;
 import Model.Attendance;
@@ -20,11 +21,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class ViewTimeTableAD extends HttpServlet {
+public class ViewTimeTableAD extends BaseAuthen {
 
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int schID = Integer.parseInt(request.getParameter("scheID"));
         AttendanceDB attenDB = new AttendanceDB();
@@ -42,7 +43,7 @@ public class ViewTimeTableAD extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
     }

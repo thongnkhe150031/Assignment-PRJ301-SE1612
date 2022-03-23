@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.Admin;
+package Controller.Authentication;
 
-import Controller.Authentication.BaseAuthen;
-import DAL.ClassDB;
+import DAL.AccountDB;
+import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,16 +18,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class deleteClass extends BaseAuthen {
+public class ChangePassword extends BaseAuthen {
 
- 
-    @Override
     protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int classID = Integer.parseInt(request.getParameter("ClassID"));
-        ClassDB clDB = new ClassDB();
-        clDB.deleteClass(classID);
-        response.sendRedirect("ViewClass");
+        request.getRequestDispatcher("view/auth/changePass.jsp").forward(request, response);
     }
 
     /**
@@ -41,7 +36,23 @@ public class deleteClass extends BaseAuthen {
     @Override
     protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String email = request.getParameter("email");
+        String opass = request.getParameter("opass");
+        AccountDB acDB = new AccountDB();
+        Account ac = acDB.getAccount(email, opass);
+        if (ac == null) {
+            request.setAttribute("mess", "Incorrect password.");
+            request.getRequestDispatcher("view/auth/changePass.jsp").forward(request, response);
+        }
+        String npass = request.getParameter("npass");
+        String cpass = request.getParameter("cpass");
+        if (!npass.equals(cpass)) {
+            request.setAttribute("mess", "The re-entered password does not match the new password.");
+            request.getRequestDispatcher("view/auth/changePass.jsp").forward(request, response);
+        }
+        acDB.updatePassUser(cpass, ac.getUserID());
+        request.setAttribute("mess", "Change password successfully.");
+        request.getRequestDispatcher("view/auth/changePass.jsp").forward(request, response);
     }
 
     /**

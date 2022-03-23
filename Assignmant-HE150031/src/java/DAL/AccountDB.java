@@ -196,8 +196,51 @@ public class AccountDB extends DBContext {
         }
     }
 
+    public void updatePassUser(String pass, int userID) {
+        try {
+            String sql = "UPDATE [dbo].[User]\n"
+                    + "   SET [password] = ?\n"
+                    + " WHERE [UserID] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, pass);
+            statement.setInt(2, userID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void updateUserAD(String name, String pass, String phone, Date dob, String address, int UserID, int major, int role) {
+        try {
+            String sql = "UPDATE [dbo].[User]\n"
+                    + "   SET [name] = ?\n"
+                    + "      ,[password] = ?\n"
+                    + "      ,[dob] = ?\n"
+                    + "      ,[phone] = ? \n"
+                    + "      ,[address] =? \n"
+                    + "      ,[majorsID] = ?\n"
+                    + "      ,[roleID] = ?\n"
+                    + " WHERE [UserID] = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, name);
+            statement.setString(2, pass);
+            statement.setDate(3, dob);
+            statement.setString(4, phone);
+            statement.setString(5, address);
+            statement.setInt(6, major);
+            statement.setInt(7, role);
+            statement.setInt(8, UserID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String[] args) {
         AccountDB ac = new AccountDB();
+        String a = "1";
+        int i = Integer.parseInt(a);
+        System.out.println(i);
 //        ac.updateUser("Nguyen Kiem Thong", "0886969888", Date.valueOf("2001-08-08"), "Hung Yen", 1, 1);
 //     ac.insertUser("gogo@fpt.vn", "thong", Date.valueOf("2001-01-01"), true, "012345", "Ha Noi", 1, 1);
 //          ac.deleteUser(17);

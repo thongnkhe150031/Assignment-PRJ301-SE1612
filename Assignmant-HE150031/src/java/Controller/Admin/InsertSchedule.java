@@ -5,6 +5,7 @@
  */
 package Controller.Admin;
 
+import Controller.Authentication.BaseAuthen;
 import DAL.ClassDB;
 import DAL.ScheduleDB;
 import Model.Classs;
@@ -20,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class InsertSchedule extends HttpServlet {
+public class InsertSchedule extends BaseAuthen{
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("view/admin/insertScheduleAD.jsp").forward(request, response);
     }
@@ -37,7 +38,7 @@ public class InsertSchedule extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int tid = Integer.parseInt(request.getParameter("tid"));
         int sid = Integer.parseInt(request.getParameter("sid"));

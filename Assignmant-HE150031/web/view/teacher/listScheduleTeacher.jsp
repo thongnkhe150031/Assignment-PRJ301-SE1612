@@ -280,7 +280,7 @@
                         <form action="ViewSchedule" method="post">
                             Choose: <select name="ClassID">
                                 <c:forEach items="${requestScope.listScheByTeacher}" var = "c">
-                                    <option <c:if test="${c.getClss().getClassID() == requestScope.classsID.getClassID()}">selected</c:if> value="${c.getClss().getClassID()}">${c.getClss().getClassName()}</option>
+                                    <option value="${c.getClss().getClassID()}">${c.getClss().getClassName()}</option>
                                 </c:forEach>
                             </select>
                             <input class ="submit " type="submit" value="submit">
@@ -298,18 +298,18 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
+               
                         <tbody>
                             <c:set var="i" value="0"></c:set>
                             <c:forEach items="${requestScope.timetableByTeacher}" var = "c">
                                 <tr>
                                     <td>${i=i+1}</td>
-                                    <td>${c.getSche().getClss().getClassName()}</td>
+                                    <td>${requestScope.classsID.getClassID()}</td>
                                     <td>${c.getDate()}</td>
                                     <td>${c.getSlot().getSlotID()}</td>
                                     <td>${c.getSlot().getSlotTime()}</td>  
                                     <td>
-                                        <a href="viewMemberInClass?ClassID=${requestScope.classsID.getClassID()}" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                                        <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                        <a href="viewMemberInClass?ClassID=${requestScope.classsID.getClassID()}" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>                                      
                                         <a href="#myModal" class="delete" title="Delete" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
                                     </td>
                                 </tr>

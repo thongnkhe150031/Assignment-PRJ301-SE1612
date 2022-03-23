@@ -151,6 +151,7 @@
         </style>
     </head> 
     <body>
+        
         <nav class="navbar navbar-expand-xl navbar-light bg-light">
             <a href="#" class="navbar-brand"><i class="fa fa-cube"></i>FPT<b> University</b></a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -167,6 +168,7 @@
                         <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><img src="img/1c777ccab76cd34a26a223bf5ccd71d8.png" class="avatar" alt="Avatar"> ${sessionScope.account.getName()} <b class="caret"></b></a>
                         <div class="dropdown-menu">
                             <a href="UserDetail" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a></a>
+                        <a href="ChangePassword" class="dropdown-item"><i class="fa fa-user-o"></i> Change Password</a></a>
                             <div class="dropdown-divider"></div>
                             <a href="logout" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a></a>
                         </div>
@@ -174,6 +176,6 @@
                 </div>
             </div>
         </nav>
-                        
+
     </body>
 </html>

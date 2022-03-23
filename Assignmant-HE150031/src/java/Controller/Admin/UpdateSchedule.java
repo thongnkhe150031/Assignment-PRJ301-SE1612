@@ -5,6 +5,7 @@
  */
 package Controller.Admin;
 
+import Controller.Authentication.BaseAuthen;
 import DAL.ClassDB;
 import DAL.ScheduleDB;
 import Model.Classs;
@@ -21,10 +22,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class UpdateSchedule extends HttpServlet {
+public class UpdateSchedule extends BaseAuthen {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int scheID = Integer.parseInt(request.getParameter("scheID"));
         ScheduleDB scheDB = new ScheduleDB();
@@ -42,7 +43,7 @@ public class UpdateSchedule extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int scheID = Integer.parseInt(request.getParameter("schID"));
         int userID = Integer.parseInt(request.getParameter("tid"));

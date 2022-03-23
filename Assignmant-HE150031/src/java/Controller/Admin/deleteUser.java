@@ -5,6 +5,7 @@
  */
 package Controller.Admin;
 
+import Controller.Authentication.BaseAuthen;
 import DAL.AccountDB;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class deleteUser extends HttpServlet {
+public class deleteUser extends BaseAuthen {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int userID = Integer.parseInt(request.getParameter("userID"));
         AccountDB acDB = new AccountDB();
@@ -31,7 +32,7 @@ public class deleteUser extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
     }

@@ -18,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class SubjectDetail extends HttpServlet {
+public class SubjectDetail extends BaseAuthen {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int subID = Integer.parseInt(request.getParameter("subID"));
         SubjectDB subDB = new SubjectDB();
@@ -39,7 +39,7 @@ public class SubjectDetail extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
     }

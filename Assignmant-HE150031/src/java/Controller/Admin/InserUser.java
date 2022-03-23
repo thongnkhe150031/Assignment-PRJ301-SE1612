@@ -5,6 +5,7 @@
  */
 package Controller.Admin;
 
+import Controller.Authentication.BaseAuthen;
 import DAL.AccountDB;
 import DAL.MajorsDB;
 import DAL.RoleDB;
@@ -23,11 +24,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class InserUser extends HttpServlet {
+public class InserUser extends BaseAuthen {
 
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         MajorsDB majorDB = new MajorsDB();
         RoleDB roleDB = new RoleDB();
@@ -47,7 +48,7 @@ public class InserUser extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");

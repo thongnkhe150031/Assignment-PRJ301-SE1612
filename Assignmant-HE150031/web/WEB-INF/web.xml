@@ -116,6 +116,14 @@
         <servlet-name>ViewTimeTableAD</servlet-name>
         <servlet-class>Controller.Admin.ViewTimeTableAD</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>Controller.Authentication.ChangePassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateInforUser</servlet-name>
+        <servlet-class>Controller.Admin.UpdateInforUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserDetail</servlet-name>
         <url-pattern>/UserDetail</url-pattern>
@@ -231,6 +239,14 @@
     <servlet-mapping>
         <servlet-name>ViewTimeTableAD</servlet-name>
         <url-pattern>/ViewTimeTableAD</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/ChangePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateInforUser</servlet-name>
+        <url-pattern>/UpdateInforUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
