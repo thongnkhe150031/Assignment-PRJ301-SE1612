@@ -49,7 +49,6 @@ public class UpdateInforUser extends BaseAuthen {
             throws ServletException, IOException {
         String userID = String.valueOf(request.getParameter("useID"));
         int uid = Integer.parseInt(userID);
-        uid = Integer.parseInt(request.getParameter("useid"));
         String fname = request.getParameter("fname");
         String pass = request.getParameter("pass");
         String phoneNumber = request.getParameter("phone");
@@ -57,10 +56,10 @@ public class UpdateInforUser extends BaseAuthen {
         String address = request.getParameter("address");
         int major = Integer.parseInt(request.getParameter("majors"));
         int role = Integer.parseInt(request.getParameter("roles"));
-        response.getWriter().print(request.getParameter("majors"));
-//        AccountDB acDB = new AccountDB();
-//        acDB.updateUserAD(fname, pass, phoneNumber, dob, address, major, role, uid);
-//        response.sendRedirect("ViewUser");
+        response.getWriter().print(uid);
+        AccountDB acDB = new AccountDB();
+        acDB.updateUserAD(fname, pass, phoneNumber, dob, address, major, role, uid);
+        response.sendRedirect("ViewUser");
 
     }
 

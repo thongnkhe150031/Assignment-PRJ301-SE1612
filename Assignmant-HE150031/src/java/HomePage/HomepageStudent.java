@@ -22,7 +22,7 @@ public class HomepageStudent extends BaseAuthen {
  
     protected void processGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("ViewScheduleStudent");
+       request.getRequestDispatcher("view/student/homepageStudent.jsp").forward(request, response);
     }
 
 
