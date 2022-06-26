@@ -165,8 +165,8 @@ public class ClassDB extends DBContext {
     
     public static void main(String[] args) {
         ClassDB clDB = new ClassDB();
-//        Classs cls = clDB.getClassbyName("SE1601");
-//        System.out.println(cls.getClassID());
+        Classs cls = clDB.getClassbyName("SE1602");
+        System.out.println(cls.getClassID());
 //        clDB.InsertStudentInClass(2, 222);
 //        clDB.InsertClass("IA1603");
     }

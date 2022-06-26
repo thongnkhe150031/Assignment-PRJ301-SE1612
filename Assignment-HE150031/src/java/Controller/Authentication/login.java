@@ -64,7 +64,9 @@ public class login extends HttpServlet {
             response.sendRedirect("HomepageAdmin");
             }
         } else {
-            response.sendRedirect("login");
+            String mess = "Incorrect account or password";
+            request.setAttribute("mess",mess);
+            request.getRequestDispatcher("view/auth/login.jsp").forward(request, response);
         }
 
     }

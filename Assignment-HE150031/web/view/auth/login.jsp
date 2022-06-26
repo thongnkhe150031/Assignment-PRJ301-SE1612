@@ -52,7 +52,10 @@
         </div>
         <div class="login-form">
             <form action="login" method="post">
-                <h2 class="text-center">Log in</h2>       
+                <h2 class="text-center">Log in</h2>
+                <h6 class="text-center">
+                    ${mess}
+                </h6>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Username" required="required" name="email">
                 </div>
